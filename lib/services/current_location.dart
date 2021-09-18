@@ -16,7 +16,6 @@ late CameraPosition _cameraPosition =
 LatLng _initialcameraposition = LatLng(0.5937, 0.9629);
 
 Future<String> getLoc() async {
-  print("here");
 
   bool _serviceEnabled;
   PermissionStatus _permissionGranted;
@@ -42,7 +41,7 @@ Future<String> getLoc() async {
 
   DateTime now = DateTime.now();
 
-  details += "Date/Time: ";
+  details += "";
   details += DateFormat('EEE d MMM kk:mm:ss ').format(now);
 
   _initialcameraposition =
@@ -52,7 +51,9 @@ Future<String> getLoc() async {
       .then((value) {
     _address = value.first.addressLine;
   });
-  details += "\nAddress: ";
+  details += "{}";
+  details += _currentPosition.latitude.toString()+" , "+_currentPosition.longitude.toString();
+  details += "{}";
   details += _address;
 
   return details;
