@@ -1,15 +1,12 @@
 // @dart=2.9
 import 'package:ambulance_tracker/Animation/FadeAnimation.dart';
-import 'package:ambulance_tracker/screens/choice_page.dart';
 import 'package:ambulance_tracker/screens/patient_page.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    ));
+import 'driver_page.dart';
+import 'hospital_page.dart';
 
-class HomePage extends StatelessWidget {
+class ChoicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +70,7 @@ class HomePage extends StatelessWidget {
                               margin: EdgeInsets.only(top: 50),
                               child: Center(
                                 child: Text(
-                                  "Login",
+                                  "Role",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 40,
@@ -86,7 +83,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(30.0),
+                  padding: EdgeInsets.all(20.0),
                   child: Column(
                     children: <Widget>[
                       FadeAnimation(
@@ -102,32 +99,34 @@ class HomePage extends StatelessWidget {
                                       blurRadius: 20.0,
                                       offset: Offset(0, 10))
                                 ]),
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      //border: Border(bottom: BorderSide(color: Colors.grey[400]))!
-                                      ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Email or Phone number",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Password",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                )
-                              ],
+                          )),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      FadeAnimation(
+                          2,
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(colors: [
+                                  Color.fromRGBO(143, 148, 251, 1),
+                                  Color.fromRGBO(143, 148, 251, .6),
+                                ])),
+                            child: Center(
+                              child: FlatButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                PatientPage()));
+                                  },
+                                  child: Text(
+                                    "User",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                             ),
                           )),
                       SizedBox(
@@ -149,10 +148,39 @@ class HomePage extends StatelessWidget {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                ChoicePage()));
+                                                HospitalPage()));
                                   },
                                   child: Text(
-                                    "Login",
+                                    "Hospital Reception",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                            ),
+                          )),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      FadeAnimation(
+                          2,
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(colors: [
+                                  Color.fromRGBO(143, 148, 251, 1),
+                                  Color.fromRGBO(143, 148, 251, .6),
+                                ])),
+                            child: Center(
+                              child: FlatButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                DriverPage()));
+                                  },
+                                  child: Text(
+                                    "Driver",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),

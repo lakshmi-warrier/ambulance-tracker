@@ -5,7 +5,7 @@ class MapUtils {
   MapUtils._();
 
   static Future<void> openMap(double latitude, double longitude) async {
-    String googleUrl = 'https://www.google.com/maps/search/hospitals/$latitude,$longitude';
+    String googleUrl = 'https://www.google.com/maps/search/hospitals nearby';
     if (await canLaunch(googleUrl)) {
       await launch(googleUrl);
     } else {
