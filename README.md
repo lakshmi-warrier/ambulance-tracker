@@ -6,6 +6,7 @@ A mobile application built using Flutter that notifies patients of nearby hospit
 <p align="center">
    <img align="center" height="500" src="https://github.com/lakshmi-warrier/ambulance-tracker/blob/main/screenshots/Welcome_page.jpg"/>
  </p>
+ 
 ## Why TRACKIUM?
 Other similar applications in the market focus more on communication between management and ambulance fleet, whereas TRACKIUM also incorporates features that keeps patients in the loop.
 
