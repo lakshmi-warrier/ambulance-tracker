@@ -4,7 +4,7 @@ import 'package:ambulance_tracker/screens/patient_page.dart';
 import 'package:flutter/material.dart';
 
 import 'driver_page.dart';
-import 'hospital_page.dart';
+import 'all_drivers.dart';
 
 class ChoicePage extends StatelessWidget {
   @override
@@ -148,7 +148,7 @@ class ChoicePage extends StatelessWidget {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                HospitalPage()));
+                                                ShowDrivers()));
                                   },
                                   child: Text(
                                     "Hospital Reception",
