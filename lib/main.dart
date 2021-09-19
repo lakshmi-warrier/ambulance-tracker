@@ -2,7 +2,7 @@
 import 'package:ambulance_tracker/Animation/FadeAnimation.dart';
 import 'package:flutter/material.dart';
 
-import 'Screens/Welcome/welcome_screen.dart';
+import 'screens/Welcome/welcome_screen.dart';
 
 void main() => runApp(
     MaterialApp(

@@ -24,6 +24,9 @@ class _PatientPageState extends State<PatientPage> {
 
   @override
   Widget build(BuildContext context) {
+    currentLoc();
+
+
     try {
       loc[0];
     } catch (e) {
@@ -90,7 +93,7 @@ class _PatientPageState extends State<PatientPage> {
 
   List<Widget> getHosps() {
     List<Widget> lst = [];
-    for (int i = 1; i <= 4; i++)
+    for (int i = 1; i <= 4; i++) {
       lst.add(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Container(
@@ -134,6 +137,7 @@ class _PatientPageState extends State<PatientPage> {
               ]),
             )),
       ));
+    }
 
     return lst;
   }
