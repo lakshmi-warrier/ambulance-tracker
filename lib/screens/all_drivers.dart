@@ -25,7 +25,7 @@ class _ShowDriversState extends State<ShowDrivers> {
               icon: Icon(Icons.location_on),
             ),
             Tab(
-              text: "All",
+              text: "Available",
             ),
             Tab(text: "Working"),
             Tab(text: "Offline"),
