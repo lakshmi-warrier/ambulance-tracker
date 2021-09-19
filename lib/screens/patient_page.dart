@@ -64,7 +64,7 @@ class _PatientPageState extends State<PatientPage> {
                   children: [
                     Text("Date: " + date_time),
                     Text("Address: " + address),
-                    Text("Location: " + loc[0] + ", " + loc[1]),
+                    //Text("Location: " + loc[0] + ", " + loc[1]),
                   ],
                 ),
               ),
