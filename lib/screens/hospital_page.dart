@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'all_drivers.dart';
+
 class HospitalPage extends StatefulWidget {
   const HospitalPage({Key? key}) : super(key: key);
 
@@ -15,80 +17,78 @@ class _HospitalPageState extends State<HospitalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Material(
-        color: Colors.grey[200],
+       color: Color.fromRGBO(143, 148, 251, 0.75),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 48),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        IconButton(
-                          icon: FaIcon(FontAwesomeIcons.arrowLeft),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: RichText(
-                            text: TextSpan(
-                                text:
-                                    "Hospital Dashboard         ", //let the spaces be for alignment
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                )),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: RichText(
+                              text: TextSpan(
+                                  text:
+                                      "Hospital Dashboard         ", //let the spaces be for alignment
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: RichText(
-                            text: TextSpan(
-                                text: "You have got 3 requests\ncurrently!",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 190,
-                      child: PageView(
-                        controller: PageController(viewportFraction: 0.9),
-                        scrollDirection: Axis.horizontal,
-                        pageSnapping: true,
-                        children: <Widget>[
-                          _buildRequestsCard(
-                              title: "Patient 1 Name", subject: "Location"),
-                          _buildRequestsCard(
-                              title: "Patiet 2 Name", subject: "Location"),
-                          _buildRequestsCard(
-                              title: "Patient 3 Name", subject: "Location")
                         ],
                       ),
-                    ),
-                  ],
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "You have got 3 requests\ncurrently!",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 190,
+                        child: PageView(
+                          controller: PageController(viewportFraction: 0.9),
+                          scrollDirection: Axis.horizontal,
+                          pageSnapping: true,
+                          children: <Widget>[
+                            _buildRequestsCard(
+                                title: "Patient 1 Name", subject: "Location"),
+                            _buildRequestsCard(
+                                title: "Patiet 2 Name", subject: "Location"),
+                            _buildRequestsCard(
+                                title: "Patient 3 Name", subject: "Location")
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 15),
@@ -146,7 +146,7 @@ class _HospitalPageState extends State<HospitalPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                NewDriversCode()),
+                                                ShowDrivers()),
                                       )),
                               _buildItemCard(
                                 title: "Along the\nWay",

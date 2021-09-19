@@ -26,10 +26,13 @@ class _DriverPageState extends State<DriverPage> {
 
   @override
   Widget build(BuildContext context) {
+    currentLoc();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Driver page"),
+          title: Text("Driver page"),
+          backgroundColor: Color.fromRGBO(143, 148, 251, 1),
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,8 +41,14 @@ class _DriverPageState extends State<DriverPage> {
             Row(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width - 40,
-                  height: MediaQuery.of(context).size.height / 8,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width - 40,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 8,
                   child: Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -74,7 +83,9 @@ class _DriverPageState extends State<DriverPage> {
                     width: 200,
                     onChanged: (bool value) {
                       Fluttertoast.showToast(
-                          msg: !value?"You won't be called for help till you are free":"You'll be notified when we need your help",
+                          msg: !value
+                              ? "You won't be called for help till you are free"
+                              : "You'll be notified when we need your help",
                           toastLength: Toast.LENGTH_SHORT,
                           gravity: ToastGravity.BOTTOM,
                           textColor: Colors.white,
@@ -99,7 +110,7 @@ class _DriverPageState extends State<DriverPage> {
                   width: 200,
                   onChanged: (bool value) {
                     isWorking = !value;
-                    if(isWorking) isAvailable=false;
+                    if (isWorking) isAvailable = false;
                     setState(() {
                       isWorking;
                       isAvailable;
@@ -110,14 +121,20 @@ class _DriverPageState extends State<DriverPage> {
               ],
             ),
             Container(
-              width: MediaQuery.of(context).size.width - 20,
-              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width - 20,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 2,
               child: !isWorking
                   ? patientData()
                   : Card(
-                      child: Image.network(
-                          "https://img.freepik.com/free-vector/lazy-raccoon-sleeping-cartoon_125446-631.jpg?size=338&ext=jpg"),
-                    ),
+                child: Image.network(
+                    "https://img.freepik.com/free-vector/lazy-raccoon-sleeping-cartoon_125446-631.jpg?size=338&ext=jpg"),
+              ),
             )
           ],
         ),
@@ -133,7 +150,7 @@ class _DriverPageState extends State<DriverPage> {
         //address = currLoc.split("{}")[2];
         //loc = currLoc.split("{}")[1].split(" , ");
         address = "Patient's address";
-        loc = [0,0];
+        loc = [0, 0];
 
         setState(() {
           loc;
@@ -142,26 +159,26 @@ class _DriverPageState extends State<DriverPage> {
       },
       child: Card(
           child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              "Current Patient",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          Image.network(
-              "https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(address),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Location: 0, 0"),
-          ),
-        ],
-      )),
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "Current Patient",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Image.network(
+                  "https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(address),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Location: 0, 0"),
+              ),
+            ],
+          )),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NewDriversCode extends StatefulWidget {
@@ -15,6 +16,7 @@ class _NewDriversCodeState extends State<NewDriversCode> {
   final visitorsController = TextEditingController();
   final timeController = TextEditingController();
   var data = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,10 +84,11 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.blue.shade200, width: 2.0),
+                                  color: Color.fromRGBO(143, 148, 251, 1),
+                                  width: 2.0),
                               borderRadius: new BorderRadius.circular(20),
                             ),
-                            hintText: "Visitors Name"),
+                            hintText: "Driver's Name"),
                       ),
                       SizedBox(
                         height: 20,
@@ -94,7 +97,7 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                         padding: const EdgeInsets.only(left: 5.0),
                         child: RichText(
                             text: TextSpan(
-                                text: "Visitors",
+                                text: "Registration ID",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.black54,
@@ -107,7 +110,7 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                         controller: visitorsController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return "Please Enter No: of visitors";
+                            return "Please Enter the ID";
                           }
                         },
                         keyboardType: TextInputType.number,
@@ -117,10 +120,11 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.blue.shade200, width: 2.0),
+                                  color: Color.fromRGBO(143, 148, 251, 1),
+                                  width: 2.0),
                               borderRadius: new BorderRadius.circular(20),
                             ),
-                            hintText: "Enter No: of visitors"),
+                            hintText: "Reg. ID"),
                       ),
                       SizedBox(
                         height: 20,
@@ -129,7 +133,7 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                         padding: const EdgeInsets.only(left: 5.0),
                         child: RichText(
                             text: TextSpan(
-                                text: "Time",
+                                text: "Years of experience",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.black54,
@@ -142,7 +146,7 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                         controller: timeController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return "Please Enter the time";
+                            return "Please enter the years of experience";
                           }
                         },
                         decoration: InputDecoration(
@@ -151,16 +155,35 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.blue.shade200, width: 2.0),
+                                  color: Color.fromRGBO(143, 148, 251, 1),
+                                  width: 2.0),
                               borderRadius: new BorderRadius.circular(20),
                             ),
-                            hintText: "Enter Time eg: (7 pm)"),
+                            hintText: "Enter years of experience"),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                     ],
-                  ))
+                  )),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                RaisedButton(
+                    child: Text("Cancel"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
+                RaisedButton(
+                    child: Text("Add Driver"),
+                    onPressed: () {
+                      Fluttertoast.showToast(
+                          msg: "Driver added",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      Navigator.pop(context);
+                    })
+              ])
             ],
           ),
         ),
