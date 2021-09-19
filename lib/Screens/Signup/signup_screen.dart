@@ -29,12 +29,16 @@ class Body extends StatelessWidget {
           children: <Widget>[
             Text(
               "SIGNUP",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: size.height * 0.03),
-            SvgPicture.asset(
-              "assets/icons/signup.svg",
-              height: size.height * 0.35,
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Image.asset(
+                "assets/images/hands.png",
+                width: size.width * 0.7,
+              ),
             ),
             RoundedInputField(
               hintText: "Your Email",
@@ -84,14 +88,7 @@ class Background extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/signup_top.png",
-              width: size.width * 0.35,
-            ),
-          ),
+
           Positioned(
             bottom: 0,
             left: 0,
