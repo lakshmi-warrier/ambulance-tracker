@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'new_driver_page.dart';
+import 'package:ambulance_tracker/services/drivers.dart';
 
 class ShowDrivers extends StatefulWidget {
   const ShowDrivers({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class ShowDrivers extends StatefulWidget {
 class _ShowDriversState extends State<ShowDrivers> {
   @override
   Widget build(BuildContext context) {
+    sortDrivers();
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -20,7 +22,7 @@ class _ShowDriversState extends State<ShowDrivers> {
           backgroundColor: Color.fromRGBO(143, 148, 251, 1),
           bottom: TabBar(tabs: [
             Tab(
-              text: "Available",
+              text: "All",
             ),
             Tab(text: "Working"),
             Tab(text: "Offline"),
@@ -39,18 +41,14 @@ class _ShowDriversState extends State<ShowDrivers> {
         ),
         body: TabBarView(
           children: [
-            Column(
-              children: [
-                driverCard("Lakshmi", "free"),
-                driverCard("Pavithra", "free"),
-                driverCard("Sam", "free"),
-              ],
+            SingleChildScrollView(
+              child: Column(
+                children: sortDrivers(),
+              ),
             ),
-            Column(children: [driverCard("Arya", "working")]),
+            Column(children: []),
             Column(
-              children: [
-                driverCard("Bhavana", "idle"),
-              ],
+              children: [],
             ),
           ],
         ),
@@ -58,29 +56,37 @@ class _ShowDriversState extends State<ShowDrivers> {
     );
   }
 
-  Widget driverCard(String name, String status) {
+  Widget driverCard(String name, bool isFree, bool isAvailable, String regId) {
     Color col = Colors.white;
+    String status = "";
+    if (isFree && !isAvailable) {
+      col = Color.fromRGBO(235, 233, 228, 1);
+      status = "Offline";
+    } else if (isFree){
+      col = Color.fromRGBO(217, 250, 195, 1);
+    status = "Online";}
+    else if (!isFree || !isAvailable){ col = Color.fromRGBO(250, 152, 152, 1);status = "Busy";}
 
-    switch (status) {
-      case "idle":
-        col = Color.fromRGBO(235, 233, 228, 1);
-        break;
-      case "free":
-        col = Color.fromRGBO(217, 250, 195, 1);
-        break;
-
-      case "working":
-        col = Color.fromRGBO(250, 152, 152, 1);
-    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Container(
           width: MediaQuery.of(context).size.width - 50,
           height: MediaQuery.of(context).size.height / 6,
           child: Card(
-            child: Text(name),
+            child: Column(children: [Text(name), Text(regId), Text(status)]),
             color: col,
           )),
     );
+  }
+
+  List<Widget> sortDrivers() {
+    List<Widget> lst = [];
+
+    for (var e in drivers) {
+      lst.add(
+          driverCard(e['name'], e["isFree"], e["isAvailable"], e["reg_id"]));
+    }
+
+    return lst;
   }
 }
