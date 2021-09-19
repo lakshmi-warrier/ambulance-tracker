@@ -23,3 +23,12 @@ A mobile application built using Flutter that notifies patients of nearby hospit
 ## :computer: Tech Stack
 - Flutter
 - Firebase
+
+## Future Work
+- Monitor parameters like driver’s speed.
+- Monitor non-emergency speeding to improve driver safety.
+- Maintain recommended temperature for drugs or medicines.
+- Track asset history to suggest optimal routes.
+- Give an option to the patient to communicate the medical concern.
+- Multiple admin access where the system can be used by multiple sub-managers assigned by the managers.
+
