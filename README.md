@@ -1,16 +1,16 @@
-# ambulance_tracker
+# # TRACKIUM
+##  An Ambulance Tracking System!
 
-A new Flutter project.
+[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+A mobile application built using Flutter that notifies patients of nearby hospitals and the estimated time of arrival of the ambulance.It provides the hospital as well as ambulance drivers with critical information such as the patient’s location and enables effective GPS route management via real time traffic information on scheduled routes.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Features
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- GPS enabled tracking system to monitor ambulances
+- Notifies about nearby hospitals to the patients
+- Assesses distance and traffic conditions to determine fastest route
+- Easy and efficient management of ambulance drivers
+ 
