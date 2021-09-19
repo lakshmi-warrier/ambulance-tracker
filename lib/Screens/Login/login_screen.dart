@@ -104,6 +104,10 @@ class LoginScreen extends StatelessWidget {
                               children: <Widget>[
                                 Container(
                                   padding: EdgeInsets.all(8.0),
+
+                                ),
+                                Container(
+                                  padding: EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
                                     //border: Border(bottom: BorderSide(color: Colors.grey[400]))!
                                   ),
