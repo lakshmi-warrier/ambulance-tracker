@@ -13,14 +13,17 @@ class ShowDrivers extends StatefulWidget {
 class _ShowDriversState extends State<ShowDrivers> {
   @override
   Widget build(BuildContext context) {
-    sortDrivers();
+    List<List<Widget>> tab_cats = sortDrivers();
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: Text("All drivers"),
           backgroundColor: Color.fromRGBO(143, 148, 251, 1),
           bottom: TabBar(tabs: [
+            Tab(
+              icon: Icon(Icons.location_on),
+            ),
             Tab(
               text: "All",
             ),
@@ -39,52 +42,72 @@ class _ShowDriversState extends State<ShowDrivers> {
                     )),
           ],
         ),
-        body: TabBarView(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: sortDrivers(),
-              ),
+        body: TabBarView(children: [
+          Column(),
+          SingleChildScrollView(
+            child: Column(
+              children: tab_cats[0],
             ),
-            Column(children: []),
-            Column(
-              children: [],
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: tab_cats[2],
             ),
-          ],
-        ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: tab_cats[1],
+            ),
+          ),
+        ]),
       ),
     );
   }
 
-  Widget driverCard(String name, bool isFree, bool isAvailable, String regId) {
-    Color col = Colors.white;
-    String status = "";
-    if (isFree && !isAvailable) {
-      col = Color.fromRGBO(235, 233, 228, 1);
-      status = "Offline";
-    } else if (isFree){
-      col = Color.fromRGBO(217, 250, 195, 1);
-    status = "Online";}
-    else if (!isFree || !isAvailable){ col = Color.fromRGBO(250, 152, 152, 1);status = "Busy";}
-
+  Widget driverCard(String name, Color col, String status, String regId) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Container(
           width: MediaQuery.of(context).size.width - 50,
           height: MediaQuery.of(context).size.height / 6,
           child: Card(
-            child: Column(children: [Text(name), Text(regId), Text(status)]),
+            child: Column(children: [
+              Row(
+                children: [
+                  // Image.network(
+                  //   "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png")
+                ],
+              ),
+              Text(name),
+              Text(regId),
+              Text(status)
+            ]),
             color: col,
           )),
     );
   }
 
-  List<Widget> sortDrivers() {
-    List<Widget> lst = [];
+  List<List<Widget>> sortDrivers() {
+    List<List<Widget>> lst = [];
+
+    List<Widget> available = [];
+    List<Widget> offline = [];
+    List<Widget> working = [];
 
     for (var e in drivers) {
-      lst.add(
-          driverCard(e['name'], e["isFree"], e["isAvailable"], e["reg_id"]));
+      if (e['isFree'] && !e['isAvailable']) {
+        offline.add(driverCard(e['name'], Color.fromRGBO(235, 233, 228, 1),
+            "Offline", e["reg_id"]));
+      } else if (e['isFree']) {
+        available.add(driverCard(e['name'], Color.fromRGBO(217, 250, 195, 1),
+            "Available", e["reg_id"]));
+      } else if (!e['isFree'] || !e['isAvailable']) {
+        working.add(driverCard(
+            e['name'], Color.fromRGBO(250, 152, 152, 1), "Busy", e["reg_id"]));
+      }
+      lst.add(available);
+      lst.add(offline);
+      lst.add(working);
     }
 
     return lst;
