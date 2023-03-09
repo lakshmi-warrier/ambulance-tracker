@@ -57,3 +57,6 @@ TRACKIUM ensures easy and accurate tracking and plays an integral part in the am
 - Give an option to the patient to communicate the medical concern.
 - Multiple admin access where the system can be used by multiple sub-managers assigned by the managers.
 
+
+<hr>
+Since this project was maintained long back, contribute to make this project even better!
